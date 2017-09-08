@@ -1,5 +1,7 @@
 *.class
 
+#ignore login and other sesurity information
+*.properties
 #metadata ignore
 /.metadata/
 
