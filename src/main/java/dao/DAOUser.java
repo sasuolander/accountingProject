@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.Types;
 import java.util.ArrayList;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -8,7 +9,7 @@ import object.User;
 
 public class DAOUser {
 	
-	private JdbcTemplate jdbcTemplate;
+	private static JdbcTemplate jdbcTemplate;
 
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
@@ -18,12 +19,15 @@ public class DAOUser {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
-	public static void addUser(){
+	public static void addUser(User user){
 		
 	}
 	
-	public static void removeUser(){
-		
+	public static void removeUser(int index){
+		Object[] parameter ={index};
+		final String sql = "DELETE FROM userTable WHERE User_id ='?';";
+		int[] types ={Types.INTEGER};
+		jdbcTemplate.update(sql,parameter,types);
 	}
 	
 	public static ArrayList<User> ListUser(){
