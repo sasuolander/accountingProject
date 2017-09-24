@@ -21,7 +21,10 @@ public class DAOItem {
 	}
 	
 	public static void addItem(Item item){
+		//INSERT INTO shared-burden VALEUS(User_id,Item_id,Item_name,T_timetamp,Price)"
+		final String sql = "INSERT INTO shared-burden (User_id, Item_id, Item_name, T_timetamp, Price ) VALEUS(?,?,?,?,?)";
 		
+				
 		
 	}
 	
@@ -34,6 +37,15 @@ public class DAOItem {
 	}
 	
 	public static ArrayList<Item> ListItem(){
+		final String sql = "SELECT User_id, Item_id, Item_name, T_timetamp, Price FROM shared-burden";
+		
+		return null;
+	}
+	
+	public static ArrayList<Item> ListItemView(){
+		final String sql = "SELECT Item_name,UT.Username,Price, T_timetamp FROM shared_burden AS SB"
+							+"JOIN userTable AS UT  ON  SB.User_ID = UT.User_ID;";
+		
 		return null;
 	}
 	

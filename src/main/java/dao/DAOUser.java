@@ -20,7 +20,7 @@ public class DAOUser {
 	}
 	
 	public static void addUser(User user){
-		
+		final String sql ="INSERT INTO userTable (User_id, Username, Email, Password) VALUES (?,?,?,?);";
 	}
 	
 	public static void removeUser(int index){

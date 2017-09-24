@@ -12,7 +12,7 @@ public class ItemRowMapper  implements RowMapper<Item>{
 	
 	public Item mapRow(ResultSet rs,int rowNum) throws SQLException{
 		Item i = new Item();
-		i.setId(rs.getInt("Item_is"));
+		i.setId(rs.getInt("Item_id"));
 		i.setUsername(rs.getString("Username"));
 		i.setName(rs.getString("Item_Name"));
 		i.setTimestamp(rs.getDate("T_timestamp"));
