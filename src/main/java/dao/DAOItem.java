@@ -3,7 +3,12 @@ package dao;
 import java.sql.Types;
 import java.util.ArrayList;
 
+import javax.sql.DataSource;
+
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
 import object.Item;
 import object.User;
@@ -20,12 +25,17 @@ public class DAOItem {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
+	
+	private static NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+	
+	
 	public static void addItem(Item item){
 		//INSERT INTO shared-burden VALEUS(User_id,Item_id,Item_name,T_timetamp,Price)"
-		final String sql = "INSERT INTO shared-burden (User_id, Item_id, Item_name, T_timetamp, Price ) VALEUS(?,?,?,?,?)";
+		final String sql = "INSERT INTO shared-burden (User_id, Item_id, Item_name, T_timetamp, Price ) VALEUS(:User_id,:Id,:name,:timestamp,:price)";
+		//NamedParameterJdbcTemplate
+		SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(item);
 		
-				
-		
+		namedParameterJdbcTemplate.update(sql, namedParameters);
 	}
 	
 	public static void removeItem(int index){
@@ -38,6 +48,7 @@ public class DAOItem {
 	
 	public static ArrayList<Item> ListItem(){
 		final String sql = "SELECT User_id, Item_id, Item_name, T_timetamp, Price FROM shared-burden";
+		
 		
 		return null;
 	}

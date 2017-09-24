@@ -4,7 +4,7 @@ package object;
 
 public class User {
 	
-	private int User_id;
+	protected int User_id;
 	private String Username;
 	private String Email;
 	

@@ -12,6 +12,7 @@ public class Item extends User{
 	private int Id;
 	private String name;
 	private Date timestamp;
+	private double price;
 	
 	public int getId() {
 		return Id;
@@ -31,20 +32,29 @@ public class Item extends User{
 	public void setTimestamp(Date timestamp) {
 		this.timestamp = timestamp;
 	}
+	
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
 	@Override
 	public String toString() {
 		return "Item Id=" + Id +"userID"+super.toString()+ ", name=" + name + ", timestamp=" + timestamp;
 	}
-	public Item(int id,int userid, String name, Date timestamp) {
-		super();
-		Id = id;
+	public Item(int id,int userid, String name, Date timestamp, double price) {
+		super.User_id=userid;
+		this.Id = id;
 		this.name = name;
 		this.timestamp = timestamp;
+		this.price=price;
 	}
 	public Item() {
 		super();
-		Id = 0;
+		this.Id = 0;
 		this.name = null;
 		this.timestamp = null;
+		this.price =0;
 	}
 }
