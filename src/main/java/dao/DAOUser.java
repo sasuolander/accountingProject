@@ -1,14 +1,13 @@
 package dao;
 
+import object.User;
 import java.sql.Types;
 import java.util.List;
-
 import org.springframework.jdbc.core.JdbcTemplate;
-
-import object.User;
+import org.springframework.jdbc.core.RowMapper;
 
 public class DAOUser {
-	
+
 	private static JdbcTemplate jdbcTemplate;
 
 	public JdbcTemplate getJdbcTemplate() {
@@ -18,20 +17,28 @@ public class DAOUser {
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
-	
-	public static void addUser(User user){
-		final String sql ="INSERT INTO userTable (User_id, Username, Email, Password) VALUES (?,?,?,?);";
-		
+
+	// This method add user.
+	public static void addUser(User user) {
+		final String sql = "INSERT INTO userTable (Username, Email, Password) VALUES (?,?,?);";
+		Object[] parametric = new Object[] { user.getUsername(), user.getEmail(), user.getPassword() };
+		jdbcTemplate.update(sql, parametric);
 	}
-	
-	public static void removeUser(int index){
+
+	// This method remove user.
+	public static void removeUser(int index) {
 		final String sql = "DELETE FROM userTable WHERE User_id ='?';";
-		Object[] parameter ={index};
-		int[] types ={Types.INTEGER};
-		jdbcTemplate.update(sql,parameter,types);
+		Object[] parameter = { index };
+		int[] types = { Types.INTEGER };
+		jdbcTemplate.update(sql, parameter, types);
 	}
-	
-	public static List<User> ListUser(){
-		return null;
+
+	// This method list user for debugging.
+	public static List<User> ListUser() {
+		final String sql = "SELECT User_id,Username, Email, Password FROM userTable";
+		RowMapper<User> mapper = new UserRowMapping();
+		List<User> Users = jdbcTemplate.query(sql, mapper);
+
+		return Users;
 	}
 }
