@@ -59,6 +59,9 @@ public class User {
 		Password = null;
 	}
 
+	
+	//Hashing
+	
 	@Override
 	public String toString() {
 		return "UserObject User_id=" + User_id + ", Username=" +

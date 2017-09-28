@@ -5,25 +5,24 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context.xsd">
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/security 
+    http://www.springframework.org/schema/security/spring-security-4.0.xsd
+    ">
 <!--  <import resource=""/>-->
-	
+<!-- This tell where password to database is located -->
 	<context:property-placeholder location="
 		db_connection.properties"/>
 	
-	
-	<bean id = "item" class = "object.Item">
-      <!-- collaborators and configuration for this bean go here -->
-   </bean>
-   <bean id = "user" class = "object.User">
-   </bean>
+	<!-- Bean definition for beanfactory -->
+	<bean id = "item" class = "object.Item"></bean>
+   <bean id = "user" class = "object.User"></bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
    
-<!-- <bean id = "..." class = "user"> -->
-<!--       <property name="accountDao" ref="accountDao"/> -->
-<!--         <property name="itemDao" ref="itemDao"/> -->
-<!--    </bean> -->
-
-
+	<!-- Database connection -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="${db.driver}" />
@@ -34,8 +33,31 @@
 		<property name="maxActive" value="5" />
 	</bean>
 	
-		<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-			<property name="dataSource" ref="dataSource"/>
-		</bean>
+	<!-- boilerplate for password security from  
+	http://www.baeldung.com/securing-a-restful-web-service-with-spring-security--> 
+	<http entry-point-ref="restAuthenticationEntryPoint">
+		<intercept-url pattern="/api/admin/**" access="ROLE_ADMIN" />
+
+		<form-login authentication-success-handler-ref="mySuccessHandler"
+			authentication-failure-handler-ref="myFailureHandler" />
+
+		<logout />
+	</http>
+
+	<beans:bean id="mySuccessHandler"
+		class="org.rest.security.MySavedRequestAwareAuthenticationSuccessHandler" />
+	<beans:bean id="myFailureHandler"
+		class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler" />
+
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider>
+			<user-service>
+				<user name="temporary" password="temporary" authorities="ROLE_ADMIN" />
+				<user name="user" password="user" authorities="ROLE_USER" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+		
+		
 
 </beans>
