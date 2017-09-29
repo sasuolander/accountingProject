@@ -1,13 +1,19 @@
 package object;
 
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.Email;
+
 
 
 public class User {
 	
 	protected int User_id;
+	@Size(min = 1, max=255)
 	private String Username;
+	@Size(min = 1, max=255)
+	@Email
 	private String Email;
-	
+	@Size(min = 1, max=255)
 	private String Password; //hashing algorythmis is going to be Bcrypt, 
 	//datatype for database is binary(60)
 

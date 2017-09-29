@@ -1,6 +1,7 @@
 package object;
 
 import java.util.Date;
+import javax.validation.constraints.Size;
 
 public class Item extends User{
 
@@ -10,8 +11,10 @@ public class Item extends User{
 	//	Price varchar(255),
 	
 	private int Id;
+	@Size(min = 1, max=255)
 	private String name;
 	private Date timestamp;
+	@Size(min = 1, max=255)
 	private double price;
 	
 	public int getId() {

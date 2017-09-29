@@ -16,13 +16,6 @@ public class MainController {
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(MainController.class, args);
 	}
-
-	
-	public void configuration(){
-		
-	}
-
-
 }
 
 
