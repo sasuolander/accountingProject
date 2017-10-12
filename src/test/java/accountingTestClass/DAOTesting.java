@@ -2,22 +2,27 @@ package accountingTestClass;
 
 import dao.*;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import  static org.mockito.Mockito.mock;
 
 import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import object.Item;
 import object.User;
 
 public class DAOTesting {
-
+	
 	@Before
 	public void setup() {
+		Mockito.doReturn(value)
+	       
+	       
 		
+		DAOItem dao =new DAOItem();
 		
 		DAOItem mockitoItem = mock(DAOItem.class);
 		DAOUser mockitoUser = mock(DAOUser.class);
@@ -35,8 +40,8 @@ public class DAOTesting {
 		Users.add(new User(1, "tommi", "tiina@koti.fi", "tommi"));
 		Users.add(new User(2, "heikki", "tiina@koti.fi", "heikki"));
 		Users.add(new User(3, "tiina", "tiina@koti.fi", "tiina"));
-
-		when(DAOItem.addItem(item)).thenReturn(a);
+	
+		Mockito.doCallRealMethod().when(dao.addItem(item)).thenReturn(true);
 
 	}
 }

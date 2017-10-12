@@ -6,21 +6,30 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
+
 import org.springframework.boot.*;
+
+import object.Item;
+import dao.DAOItem;
 
 
 //(/item)
 @RequestMapping("/item")
 public class ItemController {
+	DAOItem dao = new DAOItem();
 	
-	@RequestMapping
-	public String defaultResult(){
-		return null;
+	@RequestMapping(method = RequestMethod.GET)
+	@ResponseBody
+	public List<Item> defaultResult(){
+		return dao.ListItem();
 	}
 	 
 
 	//(/item/add_item)
-	@RequestMapping("/add_item")
+	@RequestMapping(value="/add_item",method = RequestMethod.PUT)
 	public String addItem() {
 		
 		
@@ -37,8 +46,8 @@ public class ItemController {
 	
 	//(/item/List_item)
 	@RequestMapping("/List_item")
-	public String listItem() {
-		return null;
+	public List<Item> listItem() {
+		return dao.ListItem();
 		
 	}
 	
