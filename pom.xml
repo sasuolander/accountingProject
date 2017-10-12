@@ -64,41 +64,25 @@
 			<version>1.1.1</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.springframework.mobile/spring-mobile -->
-<!-- <dependency> -->
-<!--     <groupId>org.springframework.mobile</groupId> -->
-<!--     <artifactId>spring-mobile</artifactId> -->
-<!--     <version>${spring.mobile.version}</version> -->
-<!-- </dependency> -->
+<!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
+		<dependency>
+		    <groupId>org.mockito</groupId>
+		    <artifactId>mockito-all</artifactId>
+		    <version>1.9.5</version>
+		    <scope>test</scope>
+		</dependency>
 		
-
-    
- 
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot</artifactId>
-    <version>1.5.7.RELEASE</version>
-</dependency>
-
- <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${org.springframework-version}</version>
-        </dependency>
-
-<!-- 	<repositories> -->
-<!--         <repository> -->
-<!--             <id>spring-releases</id> -->
-<!--             <url>https://repo.spring.io/libs-release</url> -->
-<!--         </repository> -->
-<!--     </repositories> -->
-<!--     <pluginRepositories> -->
-<!--         <pluginRepository> -->
-<!--             <id>spring-releases</id> -->
-<!--             <url>https://repo.spring.io/libs-release</url> -->
-<!--         </pluginRepository> -->
-<!--     </pluginRepositories> -->
-
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot</artifactId>
+		    <version>1.5.7.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>1.5.7.RELEASE</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.jumpmind.symmetric.jdbc</groupId>
@@ -139,12 +123,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>1.9.5</version>
-		</dependency>
-
-		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.0.3.Final</version>
@@ -170,18 +148,14 @@
 			<version>2.3.1</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-			<version>1.5.7.RELEASE</version>
-		</dependency>
+		
 	</dependencies>
-	<repositories>
+<!-- 	<repositories>
 		<repository>
 			<id></id>
 			<name></name>
 			<url></url>
 		</repository>
-	</repositories>
+	</repositories> -->
 
 </project>

@@ -10,15 +10,36 @@ import org.springframework.boot.*;
 
 
 //(/item)
-@RequestMapping()
+@RequestMapping("/item")
 public class ItemController {
+	
+	@RequestMapping
+	public String defaultResult(){
+		return null;
+	}
+	 
 
 	//(/item/add_item)
+	@RequestMapping("/add_item")
+	public String addItem() {
+		
+		
+		return null;
+		
+	}
 	
 	//(/item/remove_item)
+	@RequestMapping("/remove_item")
+	public String removeItem() {
+		return null;
+		
+	}
 	
 	//(/item/List_item)
-	
-	public string()
+	@RequestMapping("/List_item")
+	public String listItem() {
+		return null;
+		
+	}
 	
 }

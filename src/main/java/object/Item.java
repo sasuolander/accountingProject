@@ -1,6 +1,8 @@
 package object;
 
 import java.util.Date;
+
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class Item extends User{
@@ -13,7 +15,12 @@ public class Item extends User{
 	private int Id;
 	@Size(min = 1, max=255)
 	private String name;
-	private Date timestamp;
+	//DDMMyyyyhhmmss
+	//20122012126060
+	//DD.MM.yyyy hh:mm:ss 
+	// patt
+	
+	private String timestamp;
 	@Size(min = 1, max=255)
 	private double price;
 	
@@ -29,10 +36,10 @@ public class Item extends User{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getTimestamp() {
+	public String getTimestamp() {
 		return timestamp;
 	}
-	public void setTimestamp(Date timestamp) {
+	public void setTimestamp(String timestamp) {
 		this.timestamp = timestamp;
 	}
 	
@@ -46,7 +53,7 @@ public class Item extends User{
 	public String toString() {
 		return "Item Id=" + Id +"userID"+super.toString()+ ", name=" + name + ", timestamp=" + timestamp;
 	}
-	public Item(int id,int userid, String name, Date timestamp, double price) {
+	public Item(int id,int userid, String name, String timestamp, double price) {
 		super.User_id=userid;
 		this.Id = id;
 		this.name = name;
