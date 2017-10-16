@@ -19,14 +19,14 @@ public class DAOUser {
 	}
 
 	// This method add user.
-	public static void addUser(User user) {
+	public void addUser(User user) {
 		final String sql = "INSERT INTO userTable (Username, Email, Password) VALUES (?,?,?);";
 		Object[] parametric = new Object[] { user.getUsername(), user.getEmail(), user.getPassword() };
 		jdbcTemplate.update(sql, parametric);
 	}
 
 	// This method remove user.
-	public static void removeUser(int index) {
+	public  void removeUser(int index) {
 		final String sql = "DELETE FROM userTable WHERE User_id ='?';";
 		Object[] parameter = { index };
 		int[] types = { Types.INTEGER };
@@ -34,7 +34,7 @@ public class DAOUser {
 	}
 
 	// This method list user for debugging.
-	public static List<User> ListUser() {
+	public  List<User> ListUser() {
 		final String sql = "SELECT User_id,Username, Email, Password FROM userTable";
 		RowMapper<User> mapper = new UserRowMapping();
 		List<User> Users = jdbcTemplate.query(sql, mapper);

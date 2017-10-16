@@ -7,23 +7,48 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import object.User;
+import dao.DAOUser;
+
 //(/user)
 
-@RequestMapping("/user")
+
 public class UserController {
-
-}
-
-
-
-
+	DAOUser dao = new DAOUser();
 //(/user/login)
+	@RequestMapping(value="/login{user}" ,method=RequestMethod.GET)
+	public String login (){
+		return null;
+		
+	}
 
 //(/user/update)
+	@RequestMapping(value="/update" ,method=RequestMethod.PUT)
+	public String update(){
+		return null;
+		
+	}
+
 
 //(/user/update/password)
+	@RequestMapping(value="/update/password" ,method=RequestMethod.PUT)
+	public String password(){
+		return null;
+		
+	}
 
 //(/user/register)
+	@RequestMapping(value="/register{user}",method=RequestMethod.PUT)
+	public String register(@PathVariable User user){
+		return null;
+		
+	}
 
 //(/user/count)
+	@RequestMapping(value="/count" ,method=RequestMethod.GET)
+	public String count() {
+		return null;
+		
+	}
 
+}
