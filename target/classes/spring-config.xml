@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+<beans:beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
@@ -7,8 +9,7 @@
 	http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/security 
-    http://www.springframework.org/schema/security/spring-security-4.0.xsd
-    ">
+    http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 <!--  <import resource=""/>-->
 <!-- This tell where password to database is located -->
 	<context:property-placeholder location="
@@ -32,6 +33,22 @@
 		<property name="initialSize" value="1" />
 		<property name="maxActive" value="5" />
 	</bean>
+	
+	
+	
+	<!-- Configure to plugin JSON as request and response in method handler -->
+	<beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<beans:property name="messageConverters">
+			<beans:list>
+				<beans:ref bean="jsonMessageConverter"/>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
+	<!-- Configure bean to convert JSON to POJO and vice versa -->
+	<beans:bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+	</beans:bean>	
+	
 	
 	<!-- boilerplate for password security from  
 	http://www.baeldung.com/securing-a-restful-web-service-with-spring-security--> 
@@ -60,4 +77,4 @@
 		
 		
 
-</beans>
+</beans:beans>

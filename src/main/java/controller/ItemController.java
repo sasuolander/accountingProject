@@ -30,7 +30,7 @@ public class ItemController {
 	 
 
 	//(/item/add_item)
-	@RequestMapping(value="/add_item",method = RequestMethod.PUT)
+	@RequestMapping(value="/add_item",method = RequestMethod.POST)
 	public @ResponseBody String addItem(@RequestBody Item item) {
 		
 		dao.addItem(item);
@@ -39,7 +39,7 @@ public class ItemController {
 	}
 	
 	//(/item/remove_item)
-	@RequestMapping(value="/remove_item${id}", method = RequestMethod.PUT)
+	@RequestMapping(value="/remove_item{id}", method = RequestMethod.PUT)
 	public String removeItem(@PathVariable int id) {
 		
 		dao.removeItem(id);
@@ -49,7 +49,7 @@ public class ItemController {
 	
 	//(/item/List_item)
 	@RequestMapping("/List_item")
-	public List<Item> listItem() {
+	public @ResponseBody List<Item> listItem() {
 		return dao.ListItem();
 		
 	}

@@ -40,7 +40,10 @@ public class UserController {
 //(/user/register)
 	@RequestMapping(value="/register{user}",method=RequestMethod.PUT)
 	public String register(@PathVariable User user){
-		return null;
+		dao.addUser(user);
+		
+		
+		return "Added user is named as "+user.getUsername();
 		
 	}
 
