@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,17 +31,19 @@ public class ItemController {
 
 	//(/item/add_item)
 	@RequestMapping(value="/add_item",method = RequestMethod.PUT)
-	public String addItem() {
+	public @ResponseBody String addItem(@RequestBody Item item) {
 		
-		
-		return null;
+		dao.addItem(item);
+		return "Item named as"+item.getName()+"has been added";
 		
 	}
 	
 	//(/item/remove_item)
-	@RequestMapping("/remove_item")
-	public String removeItem() {
-		return null;
+	@RequestMapping(value="/remove_item${id}", method = RequestMethod.PUT)
+	public String removeItem(@PathVariable int id) {
+		
+		dao.removeItem(id);
+		return "Removed item is "+id;
 		
 	}
 	
