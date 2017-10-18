@@ -48,7 +48,8 @@ public class ItemController {
 	}
 	
 	//(/item/List_item)
-	@RequestMapping("/List_item")
+	
+	@RequestMapping(value="/List_item",method = RequestMethod.GET)
 	public @ResponseBody List<Item> listItem() {
 		return dao.ListItem();
 		

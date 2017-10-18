@@ -1,6 +1,6 @@
 package accountingTestClass;
 
-import dao.*;
+import accounting.dao.*;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
 import  static org.mockito.Mockito.mock;
