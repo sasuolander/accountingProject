@@ -18,7 +18,7 @@ public class DAOTesting {
 	
 	@Before
 	public void setup() {
-		Mockito.doReturn(value)
+		//Mockito.doReturn(value);
 	       
 	       
 		
@@ -41,7 +41,7 @@ public class DAOTesting {
 		Users.add(new User(2, "heikki", "tiina@koti.fi", "heikki"));
 		Users.add(new User(3, "tiina", "tiina@koti.fi", "tiina"));
 	
-		Mockito.doCallRealMethod().when(dao.addItem(item)).thenReturn(true);
+		//Mockito.doCallRealMethod().when(dao.addItem(item)).thenReturn(true);
 
 	}
 }
