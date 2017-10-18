@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,7 +18,7 @@ import dao.DAOUser;
 public class UserController {
 	DAOUser dao = new DAOUser();
 //(/user/login)
-	@RequestMapping(value="/login{user}" ,method=RequestMethod.GET)
+	@RequestMapping(value="/login/{user}" ,method=RequestMethod.GET)
 	public String login (){
 		return null;
 		
@@ -38,7 +40,7 @@ public class UserController {
 	}
 
 //(/user/register)
-	@RequestMapping(value="/register{user}",method=RequestMethod.PUT)
+	@RequestMapping(value="/register/{user}",method=RequestMethod.PUT)
 	public String register(@PathVariable User user){
 		dao.addUser(user);
 		
@@ -49,8 +51,10 @@ public class UserController {
 
 //(/user/count)
 	@RequestMapping(value="/count" ,method=RequestMethod.GET)
-	public String count() {
-		return null;
+	public int count() {
+		List<User> Users=dao.ListUser();
+		int count=Users.size();
+		return count;
 		
 	}
 

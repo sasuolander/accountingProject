@@ -39,7 +39,7 @@ public class ItemController {
 	}
 	
 	//(/item/remove_item)
-	@RequestMapping(value="/remove_item{id}", method = RequestMethod.PUT)
+	@RequestMapping(value="/remove_item/{id}", method = RequestMethod.PUT)
 	public String removeItem(@PathVariable int id) {
 		
 		dao.removeItem(id);

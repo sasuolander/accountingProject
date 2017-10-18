@@ -34,8 +34,6 @@
 		<property name="maxActive" value="5" />
 	</bean>
 	
-	
-	
 	<!-- Configure to plugin JSON as request and response in method handler -->
 	<beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 		<beans:property name="messageConverters">
@@ -52,16 +50,16 @@
 	
 	<!-- boilerplate for password security from  
 	http://www.baeldung.com/securing-a-restful-web-service-with-spring-security--> 
-	<http entry-point-ref="restAuthenticationEntryPoint">
+	<!-- <http entry-point-ref="restAuthenticationEntryPoint">
 		<intercept-url pattern="/api/admin/**" access="ROLE_ADMIN" />
 
 		<form-login authentication-success-handler-ref="mySuccessHandler"
 			authentication-failure-handler-ref="myFailureHandler" />
 
 		<logout />
-	</http>
+	</http> -->
 
-	<beans:bean id="mySuccessHandler"
+	<!-- <beans:bean id="mySuccessHandler"
 		class="org.rest.security.MySavedRequestAwareAuthenticationSuccessHandler" />
 	<beans:bean id="myFailureHandler"
 		class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler" />
@@ -73,7 +71,7 @@
 				<user name="user" password="user" authorities="ROLE_USER" />
 			</user-service>
 		</authentication-provider>
-	</authentication-manager>
+	</authentication-manager> -->
 		
 		
 
