@@ -4,9 +4,9 @@ import org.mockito.*;
 import org.mockito.Mockito.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import object.Item;
-import object.User;
-import dao.DAOUser;
+import accounting.dao.DAOUser;
+import accounting.object.Item;
+import accounting.object.User;
 
 public class mockup {
 

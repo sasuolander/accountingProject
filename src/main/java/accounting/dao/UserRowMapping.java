@@ -1,9 +1,10 @@
-package dao;
+package accounting.dao;
 
-import object.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
+
+import accounting.object.User;
 
 public class UserRowMapping implements RowMapper<User> {
 	public User mapRow(ResultSet rs,int rowNum) throws SQLException{		

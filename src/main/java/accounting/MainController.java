@@ -12,10 +12,10 @@ import org.springframework.context.annotation.Configuration;
 @SpringBootApplication
 public class MainController extends SpringBootServletInitializer{
 	
-	private static Class MainControllerClass = MainController.class;
+	private static Class<MainController> MainControllerClass = MainController.class;
 	
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(MainController.class, args);
+		SpringApplication.run(MainControllerClass, args);
 	}
 }
 

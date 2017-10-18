@@ -1,4 +1,4 @@
-package object;
+package accounting.object;
 
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;

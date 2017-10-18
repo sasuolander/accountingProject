@@ -1,4 +1,4 @@
-package object;
+package accounting.object;
 
 import java.util.Date;
 

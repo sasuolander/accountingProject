@@ -1,4 +1,4 @@
-package controller;
+package accounting.controler;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import object.User;
-import dao.DAOUser;
+import accounting.dao.DAOUser;
+import accounting.object.User;
 
 //(/user)
 

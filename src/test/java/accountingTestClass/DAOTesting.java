@@ -11,8 +11,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import object.Item;
-import object.User;
+import accounting.dao.DAOItem;
+import accounting.dao.DAOUser;
+import accounting.object.Item;
+import accounting.object.User;
 
 public class DAOTesting {
 	

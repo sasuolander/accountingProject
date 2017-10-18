@@ -1,4 +1,4 @@
-package controller;
+package accounting.controler;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import accounting.dao.DAOItem;
+import accounting.object.Item;
+
 import java.util.List;
 
 import org.springframework.boot.*;
-
-import object.Item;
-import dao.DAOItem;
 
 
 //(/item)

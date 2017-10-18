@@ -1,10 +1,11 @@
-package dao;
+package accounting.dao;
 
-import object.User;
 import java.sql.Types;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+
+import accounting.object.User;
 
 public class DAOUser {
 

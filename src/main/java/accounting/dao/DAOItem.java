@@ -1,6 +1,5 @@
-package dao;
+package accounting.dao;
 
-import object.Item;
 import java.sql.Types;
 import java.util.List;
 
@@ -9,6 +8,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+
+import accounting.object.Item;
 
 public class DAOItem {
 

@@ -16,8 +16,8 @@
 		db_connection.properties"/>
 	
 	<!-- Bean definition for beanfactory -->
-	<bean id = "item" class = "object.Item"></bean>
-   <bean id = "user" class = "object.User"></bean>
+	<bean id = "item" class = "accounting.object.Item"></bean>
+   <bean id = "user" class = "accounting.object.User"></bean>
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource" />
