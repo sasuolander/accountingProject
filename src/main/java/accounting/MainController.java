@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+
 	
-@ComponentScan(basePackages="accounting")
+
 @SpringBootApplication
 public class MainController extends SpringBootServletInitializer{
 	
@@ -22,7 +23,7 @@ public class MainController extends SpringBootServletInitializer{
 	@Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(MainControllerClass);
-    }
+   }
 }
 
 

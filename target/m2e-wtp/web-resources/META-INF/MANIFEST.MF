@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+Implementation-Title: accounting
+Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: sasu
+Implementation-Vendor-Id: accounting
 Build-Jdk: 1.8.0_144
+Implementation-URL: http://projects.spring.io/spring-boot/accounting/
 Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
 
