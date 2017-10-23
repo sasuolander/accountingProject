@@ -10,5 +10,6 @@ import org.springframework.context.annotation.*;
 public class BootConfig {
 
 // This is dymmy class. Main information property is in @EnableAutoConfiguration.
+// I have turned embedded database management off.
 	
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import accounting.dao.DAOItem;
 import accounting.object.Item;
@@ -18,17 +19,11 @@ import org.springframework.boot.*;
 
 
 //(/item)
+@RestController
 @RequestMapping("/item")
 public class ItemController {
 	DAOItem dao = new DAOItem();
 	
-	@RequestMapping(method = RequestMethod.GET)
-	@ResponseBody
-	public List<Item> defaultResult(){
-		return dao.ListItem();
-	}
-	 
-
 	//(/item/add_item)
 	@RequestMapping(value="/add_item",method = RequestMethod.POST)
 	public @ResponseBody String addItem(@RequestBody Item item) {
@@ -49,7 +44,7 @@ public class ItemController {
 	
 	//(/item/List_item)
 	
-	@RequestMapping(value="/List_item",method = RequestMethod.GET)
+	@RequestMapping(value="/list_item",method = RequestMethod.GET)
 	public @ResponseBody List<Item> listItem() {
 		return dao.ListItem();
 		
