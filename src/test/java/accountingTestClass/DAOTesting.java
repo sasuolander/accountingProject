@@ -11,8 +11,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import accounting.dao.DAOItem;
-import accounting.dao.DAOUser;
+import accounting.dao.DAOItemImpl;
+import accounting.dao.DAOUserImpl;
 import accounting.object.Item;
 import accounting.object.User;
 
@@ -24,10 +24,10 @@ public class DAOTesting {
 	       
 	       
 		
-		DAOItem dao =new DAOItem();
+		DAOItemImpl dao =new DAOItemImpl();
 		
-		DAOItem mockitoItem = mock(DAOItem.class);
-		DAOUser mockitoUser = mock(DAOUser.class);
+		DAOItemImpl mockitoItem = mock(DAOItemImpl.class);
+		DAOUserImpl mockitoUser = mock(DAOUserImpl.class);
 
 		Item item = new Item(4, 1, "cash", "201220121260600", 30.2);
 		User user = new User(1, "tommi", "tiina@koti.fi", "tommi");

@@ -1,8 +1,8 @@
 package accounting.controler;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,19 +10,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import accounting.dao.DAOItem;
+
 import accounting.object.Item;
 
 import java.util.List;
 
-import org.springframework.boot.*;
 
 
 //(/item)
 @RestController
 @RequestMapping("/item")
 public class ItemController {
-	DAOItem dao = new DAOItem();
+	
+	ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+	DAOItem dao =(DAOItem)context.getBean("itemDao");
+	
+	
 	
 	//(/item/add_item)
 	@RequestMapping(value="/add_item",method = RequestMethod.POST)
@@ -42,10 +47,16 @@ public class ItemController {
 		
 	}
 	
-	//(/item/List_item)
+	//(/item/list_item)
 	
 	@RequestMapping(value="/list_item",method = RequestMethod.GET)
 	public @ResponseBody List<Item> listItem() {
+		/*List<Item>testi =dao.ListItem();
+		for (int i=0; i<testi.size() ;i++){
+			
+		System.out.println(testi.indexOf(i));	
+		}
+		*/
 		return dao.ListItem();
 		
 	}

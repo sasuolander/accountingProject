@@ -2,9 +2,7 @@ package accounting.controler;
 
 import java.util.List;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,7 +16,10 @@ import accounting.object.User;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-	DAOUser dao = new DAOUser();
+
+	ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+	DAOUser dao =(DAOUser)context.getBean("userDao");
+	
 //(/user/login)
 	@RequestMapping(value="/login/{user}" ,method=RequestMethod.GET)
 	public String login (){
