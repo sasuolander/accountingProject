@@ -38,7 +38,7 @@ public class DAOItemImpl  implements DAOItem{
 	public void addItem(Item item) {
 		// INSERT INTO shared-burden
 		// VALEUS(User_id,Item_id,Item_name,T_timetamp,Price)"
-		final String sql = "INSERT INTO shared-burden (User_id, Item_id, Item_name, T_timetamp, Price ) VALEUS(:User_id,:Id,:name,:timestamp,:price)";
+		final String sql = "INSERT INTO shared-burden (User_id, Item_id, Item_name, T_timetamp, Price ) VALEUS(:User_id,:Id,:name,:timestamp,:price);";
 		// NamedParameterJdbcTemplate
 		SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(item);
 
@@ -55,7 +55,7 @@ public class DAOItemImpl  implements DAOItem{
 
 	// This method create table of item which is for debugging.
 	public List<Item> ListItem() {
-		final String sql = "SELECT User_id, Item_id, Item_name, T_timetamp, Price FROM shared-burden";
+		final String sql = "SELECT User_id, Item_id, Item_name, T_timetamp, Price FROM shared-burden;";
 		RowMapper<Item> mapper = new ItemRowMapper();
 		List<Item> Items = jdbcTemplate.query(sql, mapper);
 
