@@ -57,7 +57,27 @@ public class ItemController {
 		System.out.println(testi.indexOf(i));	
 		}
 		*/
-		return dao.ListItem();
+		
+		List<Item> ItemsList=dao.ListItemView();
+		
+		return ItemsList;
+		//return dao.ListItem();
+		
+	}
+	//(/item/list_itemdebug)
+	@RequestMapping(value="/list_itemdebug",method = RequestMethod.GET)
+	public @ResponseBody List<Item> listItemdebug() {
+		/*List<Item>testi =dao.ListItem();
+		for (int i=0; i<testi.size() ;i++){
+			
+		System.out.println(testi.indexOf(i));	
+		}
+		*/
+		
+		List<Item> ItemsList=dao.ListItem();
+		
+		return ItemsList;
+		//return dao.ListItem();
 		
 	}
 	

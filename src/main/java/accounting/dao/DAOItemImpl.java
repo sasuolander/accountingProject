@@ -48,14 +48,14 @@ public class DAOItemImpl  implements DAOItem{
 	// This method delete Item based on inputed index value.
 	public  void removeItem(int index) {
 		Object[] parameter = { index };
-		final String sql = "DELETE FROM shared-burden WHERE ITEM_id ='?';";
+		final String sql = "DELETE FROM shared_burden WHERE ITEM_id ='?';";
 		int[] types = { Types.INTEGER };
 		jdbcTemplate.update(sql, parameter, types);
 	}
 
 	// This method create table of item which is for debugging.
 	public List<Item> ListItem() {
-		final String sql = "SELECT User_id, Item_id, Item_name, T_timetamp, Price FROM shared-burden;";
+		final String sql = "SELECT User_id, Item_id, Item_name, T_timetamp, Price FROM shared_burden;";
 		RowMapper<Item> mapper = new ItemRowMapper();
 		List<Item> Items = jdbcTemplate.query(sql, mapper);
 
@@ -64,8 +64,7 @@ public class DAOItemImpl  implements DAOItem{
 
 	// This method create table of item which is user friendly
 	public List<Item> ListItemView() {
-		final String sql = "SELECT Item_name,UT.Username,Price, T_timetamp FROM shared_burden AS SB"
-				+ "JOIN userTable AS UT  ON  SB.User_ID = UT.User_ID;";
+		final String sql = "SELECT Item_name,UT.Username,Price, T_timetamp FROM shared_burden AS SB JOIN userTable AS UT  ON  SB.User_ID = UT.User_ID;";
 		RowMapper<Item> mapper = new ItemRowMapperView();
 		List<Item> Items = jdbcTemplate.query(sql, mapper);
 
