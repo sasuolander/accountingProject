@@ -1,7 +1,7 @@
 *.class
 
 #ignore login and other sesurity information
-*.properties
+db_connection.properties
 #metadata ignore
 /.metadata/
 
