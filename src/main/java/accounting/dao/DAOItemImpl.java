@@ -65,8 +65,9 @@ public class DAOItemImpl  implements DAOItem{
 	// This method delete Item based on inputed index value.
 	public  void removeItem(int index) {
 		Object[] parameter = { index };
-		final String sql = "DELETE FROM shared_burden WHERE ITEM_id ='?';";
+		final String sql = "DELETE FROM shared_burden WHERE Item_id =?;";
 		int[] types = { Types.INTEGER };
+		//jdbcTemplate.update(sql, parameter);
 		jdbcTemplate.update(sql, parameter, types);
 	}
 
