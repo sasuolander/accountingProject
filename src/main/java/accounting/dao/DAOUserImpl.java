@@ -2,30 +2,21 @@ package accounting.dao;
 
 import java.sql.Types;
 import java.util.List;
-
 import javax.sql.DataSource;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-
 import accounting.object.User;
 
 public class DAOUserImpl implements DAOUser{
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplate;
-
 	
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
-
-	
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
 	}
-	
-	//@Autowired
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
@@ -50,7 +41,6 @@ public class DAOUserImpl implements DAOUser{
 		final String sql = "SELECT User_id,Username, Email, Password FROM userTable;";
 		RowMapper<User> mapper = new UserRowMapping();
 		List<User> Users = jdbcTemplate.query(sql, mapper);
-
 		return Users;
 	}
 }

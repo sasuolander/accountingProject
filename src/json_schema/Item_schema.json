@@ -1,28 +1,6 @@
-
-
 {
-"_Comment":"This is for debugging",
-"Items":{
-	"Item":{
-		"User_id":10,
-		"Item_id":10,
-		"Item_name":10,
-		"T_timetamp":10,
-		"Price":10
-	}
-}
-},
-
-
-	{
-		"_Comment":"This is for viewing",
-		"Items":{
-			"Item":{
-				"Item_id":10,
-				"Username":400,
-				"Item_name":10,
-				"T_timetamp":10,
-				"Price":10
-			}
-	}
+"user_id":1,
+"id":0, 
+"name":"testi",
+"price":20
 }

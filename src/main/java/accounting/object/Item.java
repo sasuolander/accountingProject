@@ -1,34 +1,13 @@
 package accounting.object;
 
-
-import java.util.Date;
-
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
-
-
-
 public class Item extends User{
-
-	//	Item_id INT AUTO_INCREMENT NOT NULL,
-	//	Item_name varchar(255),
-	//	T_timetamp TIMESTAMP,
-	//	Price varchar(255),
-	
 	//@JsonProperty("Item_id")
 	private int Item_id;
 	@Size(min = 1, max=255)
 	//@JsonProperty("Item_name")
 	private String Item_name;
-	//DDMMyyyyhhmmss
-	//20122012126060
-	//DD.MM.yyyy hh:mm:ss 
-	// patt
 	//@JsonProperty("Item_timestamp")
 	private String Item_timestamp;
 	//@JsonProperty("Item_price")

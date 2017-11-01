@@ -3,10 +3,6 @@ package accounting.object;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-
-
 public class User {
 	
 	//@JsonProperty("User_id")
@@ -70,16 +66,10 @@ public class User {
 		Email = null;
 		Password = null;
 	}
-
-	
 	//Hashing
-	
 	@Override
 	public String toString() {
 		return "UserObject User_id=" + User_id + ", Username=" +
 	Username + ", Email=" + Email + ", Password=" + Password;
 	}
-	
-	
-	
 }
