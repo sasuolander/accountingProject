@@ -1,9 +1,17 @@
 package accounting.object;
 
+
 import java.util.Date;
 
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+
+
 
 public class Item extends User{
 
@@ -12,59 +20,62 @@ public class Item extends User{
 	//	T_timetamp TIMESTAMP,
 	//	Price varchar(255),
 	
-	private int Id;
+	//@JsonProperty("Item_id")
+	private int Item_id;
 	@Size(min = 1, max=255)
-	private String name;
+	//@JsonProperty("Item_name")
+	private String Item_name;
 	//DDMMyyyyhhmmss
 	//20122012126060
 	//DD.MM.yyyy hh:mm:ss 
 	// patt
-	
-	private String timestamp;
+	//@JsonProperty("Item_timestamp")
+	private String Item_timestamp;
+	//@JsonProperty("Item_price")
 	@Size(min = 1, max=255)
-	private double price;
+	private double Item_price;
 	
 	public int getId() {
-		return Id;
+		return Item_id;
 	}
 	public void setId(int id) {
-		Id = id;
+		Item_id = id;
 	}
 	public String getName() {
-		return name;
+		return Item_name;
 	}
 	public void setName(String name) {
-		this.name = name;
+		this.Item_name = name;
 	}
 	public String getTimestamp() {
-		return timestamp;
+		return Item_timestamp;
 	}
 	public void setTimestamp(String timestamp) {
-		this.timestamp = timestamp;
+		this.Item_timestamp = timestamp;
 	}
 	
 	public double getPrice() {
-		return price;
+		return Item_price;
 	}
 	public void setPrice(double price) {
-		this.price = price;
+		this.Item_price = price;
 	}
 	@Override
 	public String toString() {
-		return "Item Id=" + Id +"userID"+super.toString()+ ", name=" + name + ", timestamp=" + timestamp;
+		return "Item Id=" + Item_id +"userID"+super.toString()+ ", name=" + Item_name + ", timestamp=" + Item_timestamp;
 	}
 	public Item(int id,int userid, String name, String timestamp, double price) {
 		super.User_id=userid;
-		this.Id = id;
-		this.name = name;
-		this.timestamp = timestamp;
-		this.price=price;
+		this.Item_id = id;
+		this.Item_name = name;
+		this.Item_timestamp = timestamp;
+		this.Item_price=price;
 	}
 	public Item() {
 		super();
-		this.Id = 0;
-		this.name = null;
-		this.timestamp = null;
-		this.price =0;
+		this.Item_id = 0;
+		this.Item_name = null;
+		this.Item_timestamp = null;
+		this.Item_price =0;
 	}
 }

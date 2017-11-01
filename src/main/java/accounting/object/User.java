@@ -3,16 +3,22 @@ package accounting.object;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 
 public class User {
 	
+	//@JsonProperty("User_id")
 	protected int User_id;
+	//@JsonProperty("Username")
 	@Size(min = 1, max=255)
 	private String Username;
+	//@JsonProperty("Email")
 	@Size(min = 1, max=255)
 	@Email
 	private String Email;
+	//@JsonProperty("Password")
 	@Size(min = 1, max=255)
 	private String Password; //hashing algorythmis is going to be Bcrypt, 
 	//datatype for database is binary(60)

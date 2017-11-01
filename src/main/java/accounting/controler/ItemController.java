@@ -34,7 +34,7 @@ public class ItemController {
 	public @ResponseBody String addItem(@RequestBody Item item) {
 		
 		dao.addItem(item);
-		return "Item named as"+item.getName()+"has been added";
+		return "Added item "+item.getName();
 		
 	}
 	

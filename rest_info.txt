@@ -51,4 +51,27 @@ public String removeItem(@PathVariable int id) {
 //(/item/List_item)
 @RequestMapping(value="/List_item",method = RequestMethod.GET)
 public @ResponseBody List<Item> listItem() {
+
+
+@JsonProperty("User_id")
+	protected int User_id;
+	@JsonProperty("Username")
+	@Size(min = 1, max=255)
+	private String Username;
+	@JsonProperty("Email")
+	@Size(min = 1, max=255)
+	@Email
+	private String Email;
+	@JsonProperty("Password")
+	
+	@JsonProperty("Item_id")
+	private int Id;
+	@Size(min = 1, max=255)
+	@JsonProperty("Item_name")
+
+	@JsonProperty("Item_timestamp")
+	private String timestamp;
+	@JsonProperty("Item_price")
+	@Size(min = 1, max=255)
+	private double price;
 	
