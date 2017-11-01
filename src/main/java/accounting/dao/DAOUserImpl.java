@@ -39,7 +39,7 @@ public class DAOUserImpl implements DAOUser{
 
 	// This method remove user.
 	public  void removeUser(int index) {
-		final String sql = "DELETE FROM userTable WHERE User_id ='?';";
+		final String sql = "DELETE FROM userTable WHERE User_id =?;";
 		Object[] parameter = { index };
 		int[] types = { Types.INTEGER };
 		jdbcTemplate.update(sql, parameter, types);
