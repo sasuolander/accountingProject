@@ -11,6 +11,7 @@ import java.util.List;
 
 import accounting.dao.DAOItem;
 import accounting.object.Item;
+import accounting.object.User;
 
 //(/item)
 @RestController
@@ -22,8 +23,10 @@ public class ItemController {
 	
 	//(/item/add_item)
 	@RequestMapping(value="/add_item",method = RequestMethod.POST)
-	public @ResponseBody String addItem(@RequestBody Item item) {
-		dao.addItem(item);
+	public @ResponseBody String addItem(@RequestBody User user) {
+		int id=user.getUser_id();
+		Item item =user.getItems().get(0);
+		dao.addItem(id, item);
 		return "Added item "+item.getName();
 	}
 	//(/item/remove_item)
@@ -34,14 +37,14 @@ public class ItemController {
 	}
 	//(/item/list_item)
 	@RequestMapping(value="/list_item",method = RequestMethod.GET)
-	public @ResponseBody List<Item> listItem() {
-		List<Item> ItemsList=dao.ListItemView();
+	public @ResponseBody List<User> listItem() {
+		List<User> ItemsList=dao.ListItemView();
 		return ItemsList;
 	}
 	//(/item/list_itemdebug)
 	@RequestMapping(value="/list_itemdebug",method = RequestMethod.GET)
-	public @ResponseBody List<Item> listItemdebug() {
-		List<Item> ItemsList=dao.ListItem();
+	public @ResponseBody List<User> listItemdebug() {
+		List<User> ItemsList=dao.ListItem();
 		return ItemsList;
 	}
 }

@@ -2,7 +2,7 @@ package accounting.object;
 
 import javax.validation.constraints.Size;
 
-public class Item extends User{
+public class Item {
 	//@JsonProperty("Item_id")
 	private int Item_id;
 	@Size(min = 1, max=255)
@@ -13,6 +13,7 @@ public class Item extends User{
 	//@JsonProperty("Item_price")
 	@Size(min = 1, max=255)
 	private double Item_price;
+	
 	
 	public int getId() {
 		return Item_id;
@@ -43,8 +44,8 @@ public class Item extends User{
 	public String toString() {
 		return "Item Id=" + Item_id +"userID"+super.toString()+ ", name=" + Item_name + ", timestamp=" + Item_timestamp;
 	}
-	public Item(int id,int userid, String name, String timestamp, double price) {
-		super.User_id=userid;
+	public Item(int id, String name, String timestamp, double price) {
+		
 		this.Item_id = id;
 		this.Item_name = name;
 		this.Item_timestamp = timestamp;
