@@ -22,6 +22,11 @@ public class User {
 	//datatype for database is binary(60)
 
 	private List<Item> items;
+
+	
+	public void add(Item item){
+		this.items.add(item);
+	}
 	
 	public List<Item> getItems() {
 		return items;

@@ -13,23 +13,26 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import accounting.object.Item;
 import accounting.object.User;
 
-public class ItemResultSet implements ResultSetExtractor{
+public class ItemResultSetView implements ResultSetExtractor{
 	@Override
 	public List<User> extractData(ResultSet rs) throws SQLException, DataAccessException {
-		Map<Integer,User> map = new HashMap<Integer,User>();
+		Map<String,User> map = new HashMap<String,User>();
 		User userOb = null;
 		List<Item>items= new ArrayList<Item>();
 		while(rs.next()){
-			Integer id = rs.getInt("User_id");			
+			String id = rs.getString("Username");			
 			 userOb= map.get(id);
 			if (userOb==null){
 				userOb = new User();
-				userOb.setUser_id(rs.getInt("User_id"));
+				userOb.setUsername(rs.getString("Username"));
 				map.put(id, userOb);
 			}
 			userOb.setItems(items);
-			Item i = new Item(rs.getInt("Item_id"), rs.getString("Item_Name"),
-					rs.getString("T_timetamp"), rs.getDouble("Price"));
+			Item i = new Item();		
+			i.setName(rs.getString("Item_Name")); 
+			i.setTimestamp(rs.getString("T_timetamp"));
+			i.setPrice(rs.getDouble("Price"));
+					
 			userOb.add(i);
 		}
 		return new ArrayList<User>(map.values());

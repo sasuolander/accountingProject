@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import accounting.object.Item;
@@ -55,15 +56,15 @@ public class DAOItemImpl  implements DAOItem{
 	// This method create table of item which is for debugging.
 	public List<User> ListItem() {
 		final String sql = "SELECT User_id, Item_id, Item_name, T_timetamp, Price FROM shared_burden;";
-		RowMapper<User> mapper = new ItemRowMapper();
-		List<User> Items = jdbcTemplate.query(sql, mapper);
+		ItemResultSet mapper= new ItemResultSet();
+		List<User> Items = (List<User>) jdbcTemplate.query(sql, mapper);
 		return Items;
 	}
 	// This method create table of item which is user friendly
 	public List<User> ListItemView() {
 		final String sql = "SELECT Item_name,UT.Username,Price, T_timetamp FROM shared_burden AS SB JOIN userTable AS UT  ON  SB.User_ID = UT.User_ID;";
-		RowMapper<User> mapper = new ItemRowMapperView();
-		List<User> Items = jdbcTemplate.query(sql, mapper);
+		ItemResultSetView mapper = new ItemResultSetView();
+		List<User> Items = (List<User>) jdbcTemplate.query(sql, mapper);
 		return Items;
 	}
 }
