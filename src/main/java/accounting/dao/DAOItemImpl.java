@@ -4,6 +4,8 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
@@ -24,6 +26,10 @@ public class DAOItemImpl  implements DAOItem{
 	    this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 
+	
+	
+	DAOUserImpl daoUser = new DAOUserImpl();
+	
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
 	}
@@ -53,18 +59,43 @@ public class DAOItemImpl  implements DAOItem{
 		//jdbcTemplate.update(sql, parameter);
 		jdbcTemplate.update(sql, parameter, types);
 	}
-	// This method create table of item which is for debugging.
-	public List<User> ListItem() {
+	// This method create table of item .
+	public List<Item> listItem() {
 		final String sql = "SELECT User_id, Item_id, Item_name, T_timetamp, Price FROM shared_burden;";
 		ItemResultSet mapper= new ItemResultSet();
-		List<User> Items = (List<User>) jdbcTemplate.query(sql, mapper);
+		List<Item> Items = (List<Item>) jdbcTemplate.query(sql, mapper);
 		return Items;
 	}
-	// This method create table of item which is user friendly
-	public List<User> ListItemView() {
-		final String sql = "SELECT Item_name,UT.Username,Price, T_timetamp FROM shared_burden AS SB JOIN userTable AS UT  ON  SB.User_ID = UT.User_ID;";
+	// This method create table of item by using User_id
+	public List<User> listItemPerUser(int i) {
+		Object[] parameter = { i };
+		int[] types = { Types.INTEGER };
+		final String sql = "SELECT Item_name,Item_id,UT.Username,UT.User_id,Price, T_timetamp FROM shared_burden AS SB JOIN userTable AS UT  ON  SB.User_ID = UT.User_ID WHERE UT.User_id =?;";
 		ItemResultSetView mapper = new ItemResultSetView();
-		List<User> Items = (List<User>) jdbcTemplate.query(sql, mapper);
+		List<User> Items = (List<User>) jdbcTemplate.query(sql, mapper,parameter);
 		return Items;
+	}
+	
+	public List<User> listItemByAll(){
+		//List<User> users = null;
+		List<User> BigList = new ArrayList<User>();
+		
+			final String sql2 = "SELECT User_id,Username, Email FROM userTable;";
+			RowMapper<User> mapper2 = new UserRowMapping();
+			List<User> users = jdbcTemplate.query(sql2, mapper2);
+			
+		for(int i =0;i<users.size();i++){
+			final String sql = "SELECT Item_name,Item_id,UT.Username,UT.User_id,Price, T_timetamp FROM shared_burden AS SB JOIN userTable AS UT  ON  SB.User_ID = UT.User_ID WHERE UT.User_id =?;";
+			Object[] parameter = { users.get(i).getUser_id()};
+			int[] types = { Types.INTEGER };
+			ItemResultSetView mapper = new ItemResultSetView();
+			List<User> Items = (List<User>) jdbcTemplate.query(sql, mapper,parameter);
+			User v = new User();
+			v.setUser_id(Items.get(0).getUser_id());
+			v.setUsername(Items.get(0).getUsername());
+			v.setItems(Items.get(0).getItems());
+			BigList.add(v);
+		}
+		return BigList;
 	}
 }

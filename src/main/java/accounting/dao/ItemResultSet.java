@@ -15,23 +15,14 @@ import accounting.object.User;
 
 public class ItemResultSet implements ResultSetExtractor{
 	@Override
-	public List<User> extractData(ResultSet rs) throws SQLException, DataAccessException {
-		Map<Integer,User> map = new HashMap<Integer,User>();
-		User userOb = null;
+	public List<Item> extractData(ResultSet rs) throws SQLException, DataAccessException {
 		List<Item>items= new ArrayList<Item>();
 		while(rs.next()){
-			Integer id = rs.getInt("User_id");			
-			 userOb= map.get(id);
-			if (userOb==null){
-				userOb = new User();
-				userOb.setUser_id(rs.getInt("User_id"));
-				map.put(id, userOb);
-			}
-			userOb.setItems(items);
+			
 			Item i = new Item(rs.getInt("Item_id"), rs.getString("Item_Name"),
 					rs.getString("T_timetamp"), rs.getDouble("Price"));
-			userOb.add(i);
+			items.add(i);
 		}
-		return new ArrayList<User>(map.values());
+		return items;
 	}
 }

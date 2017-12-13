@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import accounting.dao.DAOUser;
+import accounting.object.Item;
 import accounting.object.User;
 
 //(/user)
@@ -53,6 +54,12 @@ public class UserController {
 		int count=Users.size();
 		return count;
 		
+	}
+	
+	@RequestMapping(value="/list_user",method = RequestMethod.GET)
+	public @ResponseBody List<User> listItemdebug() {
+		List<User> ItemsList=dao.ListUser();
+		return ItemsList;
 	}
 
 }

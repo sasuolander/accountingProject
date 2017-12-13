@@ -94,6 +94,7 @@ public class User {
 		Username = null;
 		Email = null;
 		Password = null;
+		items = null;
 	}
 	//Hashing
 	@Override

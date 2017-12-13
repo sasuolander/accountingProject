@@ -36,15 +36,21 @@ public class ItemController {
 		return "Removed item is "+id;
 	}
 	//(/item/list_item)
-	@RequestMapping(value="/list_item",method = RequestMethod.GET)
-	public @ResponseBody List<User> listItem() {
-		List<User> ItemsList=dao.ListItemView();
+	@RequestMapping(value="/list_item/{i}",method = RequestMethod.GET)
+	public @ResponseBody List<User> listItem(@PathVariable int i) {
+		List<User> ItemsList=dao.listItemPerUser(i);
 		return ItemsList;
 	}
 	//(/item/list_itemdebug)
-	@RequestMapping(value="/list_itemdebug",method = RequestMethod.GET)
-	public @ResponseBody List<User> listItemdebug() {
-		List<User> ItemsList=dao.ListItem();
+	@RequestMapping(value="/list_item",method = RequestMethod.GET)
+	public @ResponseBody List<Item> listItemdebug() {
+		List<Item> ItemsList=dao.listItem();
+		return ItemsList;
+	}
+	
+	@RequestMapping(value="/list_itemAll",method = RequestMethod.GET)
+	public @ResponseBody List<User> listItemAll() {
+		List<User> ItemsList=dao.listItemByAll();
 		return ItemsList;
 	}
 }
