@@ -1,5 +1,7 @@
 package accounting.object;
 
+import java.util.List;
+
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 
@@ -18,6 +20,21 @@ public class User {
 	@Size(min = 1, max=255)
 	private String Password; //hashing algorythmis is going to be Bcrypt, 
 	//datatype for database is binary(60)
+
+	private List<Item> items;
+
+	
+	public void add(Item item){
+		this.items.add(item);
+	}
+	
+	public List<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
 
 	public int getUser_id() {
 		return User_id;
@@ -59,12 +76,25 @@ public class User {
 		Password = password;
 	}
 	
+	public User(int user_id,List<Item>items) {
+		super();
+		this.User_id = user_id;
+		this.items = items;
+	}
+	
+	public User(String username,List<Item>items) {
+		super();
+		this.Username = username;
+		this.items = items;
+	}
+	
 	public User() {
 		super();
 		User_id = 0;
 		Username = null;
 		Email = null;
 		Password = null;
+		items = null;
 	}
 	//Hashing
 	@Override

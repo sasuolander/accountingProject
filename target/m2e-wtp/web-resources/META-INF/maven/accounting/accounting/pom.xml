@@ -11,6 +11,7 @@
 		<spring.version>4.3.12.RELEASE</spring.version>
 		<spring.security.version>4.2.3.RELEASE</spring.security.version>
 		<java.version>1.8</java.version>
+		<start-class>accounting.MainController</start-class>
 	</properties>
 	<parent>
           <groupId>org.springframework.boot</groupId>
@@ -79,6 +80,12 @@
         <artifactId>spring-boot-starter-security</artifactId>
         <version>1.5.8.RELEASE</version>
     </dependency>
+    
+    <dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-tomcat</artifactId>
+		<scope>provided</scope>
+	</dependency>
 		
 
 		<dependency>

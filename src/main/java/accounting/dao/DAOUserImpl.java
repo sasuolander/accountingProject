@@ -38,7 +38,7 @@ public class DAOUserImpl implements DAOUser{
 
 	// This method list user for debugging.
 	public  List<User> ListUser() {
-		final String sql = "SELECT User_id,Username, Email, Password FROM userTable;";
+		final String sql = "SELECT User_id,Username, Email FROM userTable;";
 		RowMapper<User> mapper = new UserRowMapping();
 		List<User> Users = jdbcTemplate.query(sql, mapper);
 		return Users;
