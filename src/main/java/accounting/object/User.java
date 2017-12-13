@@ -1,18 +1,20 @@
-package object;
+package accounting.object;
 
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 
-
-
 public class User {
 	
+	//@JsonProperty("User_id")
 	protected int User_id;
+	//@JsonProperty("Username")
 	@Size(min = 1, max=255)
 	private String Username;
+	//@JsonProperty("Email")
 	@Size(min = 1, max=255)
 	@Email
 	private String Email;
+	//@JsonProperty("Password")
 	@Size(min = 1, max=255)
 	private String Password; //hashing algorythmis is going to be Bcrypt, 
 	//datatype for database is binary(60)
@@ -64,16 +66,10 @@ public class User {
 		Email = null;
 		Password = null;
 	}
-
-	
 	//Hashing
-	
 	@Override
 	public String toString() {
 		return "UserObject User_id=" + User_id + ", Username=" +
 	Username + ", Email=" + Email + ", Password=" + Password;
 	}
-	
-	
-	
 }

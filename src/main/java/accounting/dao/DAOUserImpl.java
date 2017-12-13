@@ -1,19 +1,22 @@
-package dao;
+package accounting.dao;
 
-import object.User;
 import java.sql.Types;
 import java.util.List;
+import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import accounting.object.User;
 
-public class DAOUser {
-
-	private static JdbcTemplate jdbcTemplate;
-
+public class DAOUserImpl implements DAOUser{
+	private DataSource dataSource;
+	private JdbcTemplate jdbcTemplate;
+	
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
 	}
-
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
@@ -27,7 +30,7 @@ public class DAOUser {
 
 	// This method remove user.
 	public  void removeUser(int index) {
-		final String sql = "DELETE FROM userTable WHERE User_id ='?';";
+		final String sql = "DELETE FROM userTable WHERE User_id =?;";
 		Object[] parameter = { index };
 		int[] types = { Types.INTEGER };
 		jdbcTemplate.update(sql, parameter, types);
@@ -35,10 +38,9 @@ public class DAOUser {
 
 	// This method list user for debugging.
 	public  List<User> ListUser() {
-		final String sql = "SELECT User_id,Username, Email, Password FROM userTable";
+		final String sql = "SELECT User_id,Username, Email, Password FROM userTable;";
 		RowMapper<User> mapper = new UserRowMapping();
 		List<User> Users = jdbcTemplate.query(sql, mapper);
-
 		return Users;
 	}
 }

@@ -1,6 +1,6 @@
 package accountingTestClass;
 
-import dao.*;
+import accounting.dao.*;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
 import  static org.mockito.Mockito.mock;
@@ -11,21 +11,23 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import object.Item;
-import object.User;
+import accounting.dao.DAOItemImpl;
+import accounting.dao.DAOUserImpl;
+import accounting.object.Item;
+import accounting.object.User;
 
 public class DAOTesting {
 	
 	@Before
 	public void setup() {
-		Mockito.doReturn(value)
+		//Mockito.doReturn(value);
 	       
 	       
 		
-		DAOItem dao =new DAOItem();
+		DAOItemImpl dao =new DAOItemImpl();
 		
-		DAOItem mockitoItem = mock(DAOItem.class);
-		DAOUser mockitoUser = mock(DAOUser.class);
+		DAOItemImpl mockitoItem = mock(DAOItemImpl.class);
+		DAOUserImpl mockitoUser = mock(DAOUserImpl.class);
 
 		Item item = new Item(4, 1, "cash", "201220121260600", 30.2);
 		User user = new User(1, "tommi", "tiina@koti.fi", "tommi");
@@ -41,7 +43,7 @@ public class DAOTesting {
 		Users.add(new User(2, "heikki", "tiina@koti.fi", "heikki"));
 		Users.add(new User(3, "tiina", "tiina@koti.fi", "tiina"));
 	
-		Mockito.doCallRealMethod().when(dao.addItem(item)).thenReturn(true);
+		//Mockito.doCallRealMethod().when(dao.addItem(item)).thenReturn(true);
 
 	}
 }
