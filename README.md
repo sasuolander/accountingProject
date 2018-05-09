@@ -1,0 +1,2 @@
+# accountingProject
+Technologies: spring boot
